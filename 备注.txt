@@ -1,0 +1,39 @@
+./configure --prefix=/sjc/nginx/nginxINIT --with-http_ssl_module
+
+背景音乐使用方法:
+1.放到<head>里面(不推荐)
+<audio id="Jaudio" class="media-audio" src="Autumn.mp3" autoplay preload loop="loop"></audio >
+####不生效<bgsound src="./Autumn.mp3" loop="-1"></bgsound>
+
+2.放到<body>里面(推荐)
+<embed src="music.mp3" autostart="true" loop="true" hidden="true"></embed>
+<embed src="./Autumn.mp3" autostart="true" loop="true" hidden="true"></embed>
+
+Gitee pages链接:http://sijiacheng.gitee.io/jiangran/
+
+
+
+<audio id="bgaudio" loop="loop" preload="auto" autoplay="autoplay">
+    <source src="http://www.jfzm.cc/音乐外链.mp3" type="audio/ogg" />
+    <source src="http://www.jfzm.cc/音乐外链.mp3" type="audio/mp3" />
+</audio>
+<script>
+var bgaudio = document.getElementById('bgaudio');
+	function bgmusic(){
+	   if(bgaudio.paused){
+		   bgaudio.play();
+		   $("#bgmusic").addClass("sping");
+
+	   }else{
+		   bgaudio.pause();
+		   $("#bgmusic").removeClass("sping");
+	   }
+   }
+
+</script>
+<script>
+	var audio=document.querySelector("#bgaudio");
+	document.addEventListener("WeixinJSBridgeReady",function(){
+		audio.play();
+	},false);
+</script>
