@@ -13,33 +13,30 @@
   <script  src="./script.js"></script>
 
   <!--背景音乐,只能电脑播放-->
-  <!--<embed src="./Autumn.mp3" autostart="true" loop="true" hidden="true"></embed>-->
-  <!--背景音乐,手机播放,但强制加载,需减小音乐大小-->
-  <audio id="bgaudio" loop="loop" preload="auto" autoplay="autoplay">
-    <!--<source src="http://sijiacheng.gitee.io/wuyuhan/yuhan.mp3" type="audio/ogg" />
-    <source src="http://sijiacheng.gitee.io/wuyuhan/yuhan.mp3" type="audio/mp3" />-->
-    <source src="http://sijiacheng.gitee.io/wuyuhan/wuyuhan.mp3" type="audio/ogg" />
-    <source src="http://sijiacheng.gitee.io/wuyuhan/wuyuhan.mp3" type="audio/mp3" />
+  <audio controls="controls" id="audio" autoplay="" loop="">
+    <source src="http://sijiacheng.gitee.io/wuyuhan/wuyuhan.mp3" type="audio/mpeg"></source>
   </audio>
   <script>
-    var bgaudio = document.getElementById('bgaudio');
-    function bgmusic(){
-      if(bgaudio.paused){
-        bgaudio.play();
-        $("#bgmusic").addClass("sping");
-
-      }else{
-        bgaudio.pause();
-        $("#bgmusic").removeClass("sping");
+    var audio=document.querySelector("#audio");
+    //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+    document.addEventListener('DOMContentLoaded', function () {
+      function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+        audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+          audio.play();
+        }, false);
       }
-    }
-
-  </script>
-  <script>
-    var audio=document.querySelector("#bgaudio");
-    document.addEventListener("WeixinJSBridgeReady",function(){
-      audio.play();
-    },false);
+      audioAutoPlay();
+    });
+    //--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+    document.addEventListener('touchstart', function () {
+      function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+        audio.play();
+      }
+      audioAutoPlay();
+    });
   </script>
 
 </body>

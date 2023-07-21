@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>你好, 宝藏女孩</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1> 雨涵 我的宝藏！</h1>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+  <!--背景音乐,只能电脑播放-->
+  <!--<embed src="./Autumn.mp3" autostart="true" loop="true" hidden="true"></embed>-->
+  <!--背景音乐,手机播放,但强制加载,需减小音乐大小-->
+  <audio id="bgaudio" loop="loop" preload="auto" autoplay="autoplay">
+    <!--<source src="http://sijiacheng.gitee.io/wuyuhan/yuhan.mp3" type="audio/ogg" />
+    <source src="http://sijiacheng.gitee.io/wuyuhan/yuhan.mp3" type="audio/mp3" />-->
+    <source src="http://sijiacheng.gitee.io/wuyuhan/wuyuhan.mp3" type="audio/ogg" />
+    <source src="http://sijiacheng.gitee.io/wuyuhan/wuyuhan.mp3" type="audio/mp3" />
+  </audio>
+  <script>
+    var bgaudio = document.getElementById('bgaudio');
+    function bgmusic(){
+      if(bgaudio.paused){
+        bgaudio.play();
+        $("#bgmusic").addClass("sping");
+
+      }else{
+        bgaudio.pause();
+        $("#bgmusic").removeClass("sping");
+      }
+    }
+
+  </script>
+  <script>
+    var audio=document.querySelector("#bgaudio");
+    document.addEventListener("WeixinJSBridgeReady",function(){
+      audio.play();
+    },false);
+  </script>
+
+</body>
+</html>
